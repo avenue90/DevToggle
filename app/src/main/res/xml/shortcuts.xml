@@ -1,6 +1,7 @@
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
-    <shortcut android:shortcutId="settings" android:enabled="true" android:icon="@drawable/ic_debug"
-        android:shortcutShortLabel="@string/settings_short" android:shortcutLongLabel="@string/settings_long">
-        <intent android:action="android.intent.action.VIEW" android:targetPackage="com.ketan.devtoggle" android:targetClass="com.ketan.devtoggle.SettingsActivity" />
+    <!-- Long-press the Debug settings icon: switch debugging on/off without opening the app. -->
+    <shortcut android:shortcutId="toggle" android:enabled="true" android:icon="@drawable/ic_debug"
+        android:shortcutShortLabel="@string/toggle_short" android:shortcutLongLabel="@string/toggle_long">
+        <intent android:action="android.intent.action.VIEW" android:targetPackage="com.ketan.devtoggle" android:targetClass="com.ketan.devtoggle.ToggleActivity" />
     </shortcut>
 </shortcuts>

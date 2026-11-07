@@ -1,4 +1,4 @@
-# DevToggle
+# Debug settings (DevToggle)
 
 One tap to switch Developer options + USB debugging + Wireless debugging on, and one tap to
 switch all three off again (so banking apps that refuse to run with Developer options enabled

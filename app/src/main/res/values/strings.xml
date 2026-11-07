@@ -1,5 +1,5 @@
 <resources>
     <string name="widget_description">Green light while debugging is on. Tap to switch.</string>
-    <string name="settings_short">Settings</string>
-    <string name="settings_long">Debug toggle settings</string>
+    <string name="toggle_short">Switch on/off</string>
+    <string name="toggle_long">Switch debugging on/off</string>
 </resources>

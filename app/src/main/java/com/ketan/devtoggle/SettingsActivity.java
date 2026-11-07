@@ -25,7 +25,7 @@ public final class SettingsActivity extends Activity {
 
         ScrollView scroll = new ScrollView(this); scroll.setBackgroundColor(bg); scroll.setFitsSystemWindows(true);
         LinearLayout page = column(); page.setPadding(dp(20), dp(16), dp(20), dp(24)); scroll.addView(page);
-        page.addView(text("Debug toggle", 26, true, ink));
+        page.addView(text("Debug settings", 26, true, ink));
 
         LinearLayout statusCard = card(page); statusCard.setGravity(Gravity.CENTER_HORIZONTAL);
         light = new ImageView(this); statusCard.addView(light, new LinearLayout.LayoutParams(dp(72), dp(72)));
@@ -51,7 +51,7 @@ public final class SettingsActivity extends Activity {
 
         page.addView(heading("Shortcuts"));
         LinearLayout tips = card(page);
-        tips.addView(text("• Tap the Debug toggle icon to switch instantly.\n• Add the Debug light widget to your home screen: it glows green while debugging is on.\n• Add the Quick Settings tile; long-press it to open this page.\n• Wireless debugging works only while the phone is on Wi-Fi.", 15, false, ink));
+        tips.addView(text("• Add the Debug light widget to your home screen: it glows green while debugging is on. Tap it to switch.\n• Long-press the Debug settings icon › Switch debugging on/off.\n• Add the Quick Settings tile; long-press it to open this page.\n• Wireless debugging works only while the phone is on Wi-Fi.", 15, false, ink));
 
         if (!DebugSettings.permitted(this)) {
             page.addView(heading("Setup needed"));
