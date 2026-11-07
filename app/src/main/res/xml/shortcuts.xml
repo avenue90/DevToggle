@@ -1,0 +1,6 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:shortcutId="settings" android:enabled="true" android:icon="@drawable/ic_debug"
+        android:shortcutShortLabel="@string/settings_short" android:shortcutLongLabel="@string/settings_long">
+        <intent android:action="android.intent.action.VIEW" android:targetPackage="com.ketan.devtoggle" android:targetClass="com.ketan.devtoggle.SettingsActivity" />
+    </shortcut>
+</shortcuts>

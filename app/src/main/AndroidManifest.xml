@@ -2,20 +2,40 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Granted once from a computer: adb shell pm grant com.ketan.devtoggle android.permission.WRITE_SECURE_SETTINGS -->
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application android:label="Debug toggle" android:icon="@drawable/ic_debug" android:allowBackup="false">
-        <!-- Launcher icon: one tap toggles, shows a toast, closes. -->
+        <!-- Launcher icon: one tap toggles silently and closes. Long-press › Settings. -->
         <activity android:name=".ToggleActivity" android:exported="true" android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:excludeFromRecents="true" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts" />
         </activity>
-        <!-- Quick Settings tile showing the current state. -->
+        <!-- Settings: second launcher entry, long-press shortcut, and Quick Settings tile long-press. -->
+        <activity android:name=".SettingsActivity" android:exported="true" android:label="Debug settings"
+            android:theme="@android:style/Theme.DeviceDefault.DayNight" android:icon="@drawable/ic_debug">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" /></intent-filter>
+        </activity>
         <service android:name=".DebugTile" android:exported="true" android:label="Wireless debug" android:icon="@drawable/ic_debug"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
             <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true" />
         </service>
+        <receiver android:name=".ToggleReceiver" android:exported="false" />
+        <!-- Home-screen light widget. -->
+        <receiver android:name=".StatusWidget" android:exported="true" android:label="Debug light">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_status_info" />
+        </receiver>
     </application>
 </manifest>
